@@ -26,8 +26,10 @@ def ssh_multiple_connections(hosts_info, command):
 
 ssh_info_str = os.getenv('SSH_INFO', '[]')
 hosts_info = json.loads(ssh_info_str)
-
-command = 'whoami'
+# 要执行的脚本路径
+script_path = './setup_cron_jobs.sh'  # 修改为实际脚本路径
+command = f'bash {script_path}'
+# command = 'whoami'
 user_list, hostname_list = ssh_multiple_connections(hosts_info, command)
 user_num = len(user_list)
 content = "SSH服务器登录信息：\n"
